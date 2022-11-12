@@ -96,9 +96,7 @@ module TmuxERBParser
 
     def run_command(args = [])
       @command = Command.new(args)
-      if defined?(@output)
-        @command.instance_variable_set(:@logger, ::Logger.new(@output))
-      end
+      @command.instance_variable_set(:@logger, ::Logger.new(@output)) if defined?(@output)
       @command.run
     end
   end

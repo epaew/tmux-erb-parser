@@ -27,9 +27,7 @@ module TmuxERBParser
 
     def check_args
       msg = 'INPUT_ERB_FILES are required.' if @args.empty?
-      unless @options[:inline] ^ @options[:output]
-        msg = 'Please specify either --inline or --output option.'
-      end
+      msg = 'Please specify either --inline or --output option.' unless @options[:inline] ^ @options[:output]
 
       raise ArgumentError, msg if msg
     end

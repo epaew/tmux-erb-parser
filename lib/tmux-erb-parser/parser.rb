@@ -50,7 +50,7 @@ module TmuxERBParser
         end
       else
         erb_result
-          .gsub(/(\R){3,}/) { Regexp.last_match(1) * 2 } # reduce continuity blankline # rubocop:disable Layout/LineLength
+          .gsub(/(\R){3,}/) { Regexp.last_match(1) * 2 } # reduce continuity blankline
           .each_line(chomp: true)
       end
     end

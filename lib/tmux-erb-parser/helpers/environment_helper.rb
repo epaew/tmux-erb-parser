@@ -3,6 +3,8 @@
 module TmuxERBParser
   module Helpers
     module EnvironmentHelper
+      module_function
+
       def prefix_key
         `tmux show-option -g prefix`.split[1]
       end

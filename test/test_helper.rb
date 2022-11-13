@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'fileutils'
 require 'simplecov'
 require 'simplecov-console'
 require 'simplecov_json_formatter'
@@ -27,7 +28,7 @@ module TmuxERBParser
     end
 
     teardown do
-      File.delete(log_file_path) if File.exist?(log_file_path)
+      FileUtils.rm_f(log_file_path)
     end
 
     private

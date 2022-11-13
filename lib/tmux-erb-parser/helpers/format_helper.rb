@@ -3,6 +3,8 @@
 module TmuxERBParser
   module Helpers
     module FormatHelper
+      module_function
+
       def format_and(*args)
         return args.first if args.length < 2
 

@@ -2,11 +2,20 @@
 
 require 'simplecov'
 require 'simplecov-console'
+require 'simplecov_json_formatter'
 require 'test/unit'
 require 'test/unit/rr'
 
-SimpleCov.formatter = SimpleCov::Formatter::Console
-SimpleCov.start { add_filter '/test/' }
+SimpleCov.start do
+  add_filter '/test/'
+  enable_coverage :branch
+  formatter SimpleCov::Formatter::MultiFormatter.new(
+    [
+      SimpleCov::Formatter::JSONFormatter, # for codeclimate
+      SimpleCov::Formatter::Console        # for stdout
+    ]
+  )
+end
 
 require 'bundler/setup'
 require 'tmux-erb-parser'

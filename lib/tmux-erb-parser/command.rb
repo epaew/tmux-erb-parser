@@ -27,9 +27,7 @@ module TmuxERBParser
 
     def check_args
       msg = 'INPUT_ERB_FILES are required.' if @args.empty?
-      unless @options[:inline] ^ @options[:output]
-        msg = 'Please specify either --inline or --output option.'
-      end
+      msg = 'Please specify either --inline or --output option.' unless @options[:inline] ^ @options[:output]
 
       raise ArgumentError, msg if msg
     end
@@ -90,7 +88,7 @@ module TmuxERBParser
         @logger.info "open #{arg}."
         File.open(arg, 'r') do |input|
           p = Parser.new(input, File.extname(arg.downcase)[1..-1].to_sym)
-          commands = p.parse(@options[:output].nil?)
+          commands = p.parse(strip_comments: @options[:output].nil?)
           exec(commands, @options[:output])
         end
       end

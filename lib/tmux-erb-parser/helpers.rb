@@ -25,8 +25,10 @@ module TmuxERBParser
       end
     end
 
-    def self.binding
-      super # NOTE: Kernel.#binding is private
+    module_function
+
+    def binding # rubocop:disable Lint/UselessMethodDefinition: super(= Kernel.#binding) is private
+      super
     end
   end
 end

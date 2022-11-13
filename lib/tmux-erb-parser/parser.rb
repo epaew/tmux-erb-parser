@@ -22,7 +22,7 @@ module TmuxERBParser
       @type = type
     end
 
-    def parse(strip_comments = false)
+    def parse(strip_comments: false)
       parse_string(@input, @type).map do |line|
         line = replace_source_file(line)
         line = strip_comment(line) if strip_comments
@@ -50,7 +50,7 @@ module TmuxERBParser
         end
       else
         erb_result
-          .gsub(/(\R){3,}/) { Regexp.last_match(1) * 2 } # reduce continuity blankline # rubocop:disable Layout/LineLength
+          .gsub(/(\R){3,}/) { Regexp.last_match(1) * 2 } # reduce continuity blankline
           .each_line(chomp: true)
       end
     end

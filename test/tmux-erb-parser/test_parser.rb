@@ -33,7 +33,7 @@ module TmuxERBParser
 
     def subject(input, type:, strip_comments:)
       @parser = Parser.new(input, type || :erb)
-      @parser.parse(strip_comments)
+      @parser.parse(strip_comments: strip_comments)
     end
   end
 end

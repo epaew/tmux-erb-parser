@@ -1,16 +1,15 @@
-AllCops:
-  TargetRubyVersion: 2.5
-  Exclude:
-    - tmux-erb-parser.gemspec
+---
+require:
+  - rubocop-performance
+  - rubocop-rake
 
-Layout/MultilineMethodCallIndentation:
-  EnforcedStyle: indented_relative_to_receiver
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.5
+
+Naming/FileName:
+  Exclude:
+    - lib/tmux-erb-parser.rb
 Metrics/BlockLength:
   Exclude:
     - test/**/*
-Metrics/MethodLength:
-  Max: 15
-Naming/FileName:
-  Enabled: false
-Style/Documentation:
-  Enabled: false

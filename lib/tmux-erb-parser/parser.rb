@@ -22,7 +22,7 @@ module TmuxERBParser
       @type = type
     end
 
-    def parse(strip_comments = false)
+    def parse(strip_comments: false)
       parse_string(@input, @type).map do |line|
         line = replace_source_file(line)
         line = strip_comment(line) if strip_comments

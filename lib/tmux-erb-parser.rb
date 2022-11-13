@@ -1,3 +1,8 @@
 # frozen_string_literal: true
 
-Dir[File.expand_path('tmux-erb-parser/*.rb', __dir__)].sort.each(&method(:require))
+require_relative 'tmux-erb-parser/command'
+require_relative 'tmux-erb-parser/converter'
+require_relative 'tmux-erb-parser/helpers'
+require_relative 'tmux-erb-parser/logger'
+require_relative 'tmux-erb-parser/parser'
+require_relative 'tmux-erb-parser/version'

@@ -35,17 +35,13 @@ module TmuxERBParser
     def command_opts(opts) # rubocop:disable Metrics/MethodLength
       opts.banner = "Usage: #{@command_name} INPUT_FILES [options]"
 
-      opts.on('-i',
-              '--inline',
-              'Exec tmux subcommands to the current tmux-server.') do
+      opts.on('-i', '--inline', 'Exec tmux subcommands to the current tmux-server.') do
         @options[:inline] = true
       end
 
-      opts.on('-o',
-              '--output [OUTPUT_FILE_NAME]',
-              String,
-              'Output the configuration to a file with the specified name.'\
-              ' If the file name is omitted, output to stdout') do |fname|
+      opts.on('-o', '--output [OUTPUT_FILE_NAME]', String, <<~DESC) do |fname|
+        Output the configuration to a file with the specified name. If the file name is omitted, output to stdout
+      DESC
         @options[:output] = File.open(fname, 'w') if fname
         @options[:output] ||= $stdout
       end

@@ -13,14 +13,10 @@ jobs:
     name: Rubocop
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout codes
-      uses: actions/checkout@v3
-    - name: Set up Ruby
-      uses: actions/setup-ruby@v1
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.7.x
+        ruby-version: '2.7'
+        bundler-cache: true
 
-    - name: Run bundle install
-      run: gem install bundler && bundle install
-    - name: Run Rubocop
-      run: rubocop
+    - run: bundle exec rubocop

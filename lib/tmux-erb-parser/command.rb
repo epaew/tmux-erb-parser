@@ -83,7 +83,7 @@ module TmuxERBParser
       @args.each do |arg|
         @logger.info "open #{arg}."
         File.open(arg, 'r') do |input|
-          p = Parser.new(input, File.extname(arg.downcase)[1..-1].to_sym)
+          p = Parser.new(input, File.extname(arg.downcase)[1..].to_sym)
           commands = p.parse(strip_comments: @options[:output].nil?)
           exec(commands, @options[:output])
         end

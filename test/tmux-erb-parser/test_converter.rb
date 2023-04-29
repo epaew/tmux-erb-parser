@@ -6,8 +6,8 @@ module TmuxERBParser
       @patterns = YAML.safe_load(
         File
           .expand_path('../fixtures/test_converter_patterns.yml', __dir__)
-          .yield_self { |file| File.read(file) }
-          .yield_self { |string| ERB.new(string).result }
+          .then { |file| File.read(file) }
+          .then { |string| ERB.new(string).result }
       )
     end
 

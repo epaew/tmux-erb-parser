@@ -57,7 +57,7 @@ module TmuxERBParser
 
     def replace_source_file(line)
       # source file -> run-shell "parser --inline file"
-      if line =~ /source/ && line !~ /run(-shell)?/
+      if line.include?('source') && line !~ /run(-shell)?/
         line = line.gsub(/"source(-file)?( -q)?\s([^\s\\;]+)"/) do
           %("run-shell \\"#{PARSER_CMD} --inline #{Regexp.last_match(3)}\\"")
         end
